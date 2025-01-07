@@ -1,0 +1,15 @@
+Language: ( NodeJs, ReactJs)
+
+Social Media Platform
+
+Build a social media platform that allows users to create profiles, connect with friends, and share content. 
+
+
+The application should have the following features:
+
+1. User Authentication: Users should be able to register and login to the application. 
+2. Profile Pages: Users should be able to create profile pages, update their profile information, and add profile pictures. 
+3. Friend Connections: Users should be able to search for other users, send friend requests, and accept friend requests. 
+4. News Feed: Users should be able to view a news feed of posts from their friends and followers.
+5. Post Creation: Users should be able to create posts, add images and videos, and tag other users. 
+6. Messaging: Users should be able to send private messages to their friends
