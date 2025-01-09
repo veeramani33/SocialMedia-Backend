@@ -32,8 +32,8 @@ const searchUsers = async (req, res) => {
     }
   
     const users = await User.find({
-      name: { $regex: search, $options: "i" }, // Case-insensitive search
-    }).select("name profilePicture"); // Only return necessary fields
+      name: { $regex: search, $options: "i" }, 
+    }).select("name profilePicture"); 
   
     res.json(users);
   };

@@ -1,9 +1,9 @@
 const Post = require('../models/Post');
-const User = require('../models/User'); // Assuming you have a User model for validation
+const User = require('../models/User'); 
 
 const getPost = async (req, res) => {
     try {
-        // Fetch all posts, populated with the user data (e.g., username and profilePicture), sorted by creation date
+        // Fetch all posts, populated with the user data, sorted by creation date
         const posts = await Post.find()
             .sort({ createdAt: -1 }) // Sort in descending order of createdAt
             .populate('userId', 'name profilePicture') // Populate the 'userId' field with 'username' and 'profilePicture' from the User model
@@ -29,7 +29,6 @@ const getPost = async (req, res) => {
             posts: postsWithDetails
         });
     } catch (err) {
-        // Handle any errors
         res.status(500).json({
             message: 'Error retrieving posts',
             error: err.message
@@ -39,7 +38,7 @@ const getPost = async (req, res) => {
 
 
 const getPostById = async (req, res) => {
-    const { id } = req.params; // Extract post ID from request parameters
+    const { id } = req.params; 
 
     if (!id) {
         return res.status(400).json({ message: 'Post ID is required' });
@@ -58,7 +57,6 @@ const getPostById = async (req, res) => {
             post
         });
     } catch (err) {
-        // Handle any errors
         res.status(500).json({
             message: 'Error retrieving post',
             error: err.message
@@ -68,7 +66,7 @@ const getPostById = async (req, res) => {
 
 
 const createPost = async (req, res) => {
-    const { userId, text, media, tags } = req.body; // Extracting required data from the request body
+    const { userId, text, media, tags } = req.body; 
 
     // Confirm that the userId is provided
     if (!userId) {

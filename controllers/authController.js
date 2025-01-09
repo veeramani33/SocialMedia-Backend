@@ -25,7 +25,7 @@ const login = async (req, res) => {
     const accessToken = jwt.sign(
         {
             "UserInfo": {
-                "id": foundUser._id,    // Include User ID in the token
+                "id": foundUser._id,   
                 "username": foundUser.username,
                 "email": foundUser.email
             }
@@ -52,8 +52,8 @@ const login = async (req, res) => {
     res.json({ 
         accessToken, 
         user: {
-            id: foundUser._id,     // Return the user ID
-            email: foundUser.email, // Return the user email
+            id: foundUser._id,     
+            email: foundUser.email, 
         }
     });
 };
@@ -117,8 +117,8 @@ const Register = async (req, res) => {
             res.json({
                 accessToken,
                 user: {
-                    id: user._id,    // Return the user ID
-                    email: user.email // Return the user email
+                    id: user._id,   
+                    email: user.email 
                 }
             });
         }

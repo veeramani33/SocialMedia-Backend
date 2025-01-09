@@ -35,15 +35,6 @@ app.use('/posts', require('./routes/postsRoutes'))
 app.use('/friends', require('./routes/friendsRoutes'))
 app.use('/messages', require('./routes/messageRoutes'))
 
-app.get('/allusers', async (req, res) => {
-    try {
-      const users = await User.find(); // Retrieve all users from the database
-      res.status(200).json(users); // Send back users as a JSON response
-    } catch (error) {
-      res.status(500).json({ message: 'Error retrieving users', error });
-    }
-  });
-
 app.all('*', (req, res) => {
     res.status(404)
     if (req.accepts('html')) {

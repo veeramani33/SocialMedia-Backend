@@ -2,7 +2,7 @@ const Friendship = require('../models/Friend'); // Import Friendship model
 const User = require('../models/User'); // Assuming you have a User model for validation
 
 const getFriendRequests = async (req, res) => {
-  const { userId } = req.params;  // Get the user ID from the URL
+  const { userId } = req.params; 
 
   if (!userId) {
     return res.status(400).json({ message: 'User ID is required' });
@@ -12,10 +12,10 @@ const getFriendRequests = async (req, res) => {
     // Find all pending friend requests where the current user is the recipient
     const friendRequests = await Friendship.find({
       recipient: userId,
-      status: 'pending'  // Only pending requests
+      status: 'pending'  
     })
-    .populate('requester', 'username profilePicture')  // Populating the requester field with username and profilePicture
-    .exec();  // Execute the query
+    .populate('requester', 'username profilePicture')  
+    .exec();  
 
     if (friendRequests.length === 0) {
       console.log('No friend request found');
@@ -30,7 +30,7 @@ const getFriendRequests = async (req, res) => {
 };
 
 const getUsersNotInFriendList = async (req, res) => {
-    const { userId } = req.params;  // Get the current user ID from the URL
+    const { userId } = req.params;  
   
     if (!userId) {
       return res.status(400).json({ message: 'User ID is required' });
@@ -44,7 +44,7 @@ const getUsersNotInFriendList = async (req, res) => {
           { recipient: userId, status: 'accepted' }
         ]
       })
-      .exec();  // Execute the query
+      .exec(); 
   
       // Extract the list of friends (both requester and recipient)
       const friends = friendships.map(friendship => {
@@ -55,9 +55,9 @@ const getUsersNotInFriendList = async (req, res) => {
   
       // Find all users who are not the current user and not in their friend list
       const usersNotInFriendList = await User.find({
-        _id: { $nin: [userId, ...friends] }  // Excluding the current user and their friends
+        _id: { $nin: [userId, ...friends] }  
       })
-      .select('name profilePicture');  // Projecting only 'name' and 'profilePicture'
+      .select('name profilePicture');  
   
       if (usersNotInFriendList.length === 0) {
         console.log('No users found');
@@ -74,7 +74,7 @@ const getUsersNotInFriendList = async (req, res) => {
   
 
 const sendFriendRequest = async (req, res) => {
-    const { requesterId, recipientId } = req.body; // Extracting required data from the request body
+    const { requesterId, recipientId } = req.body; 
 
     // Confirm data is present
     if (!requesterId || !recipientId) {
@@ -121,7 +121,7 @@ const sendFriendRequest = async (req, res) => {
 
 // accepting request
 const acceptFriendRequest = async (req, res) => {
-    const { requesterId, recipientId } = req.body; // Extracting required data from the request body
+    const { requesterId, recipientId } = req.body; 
 
     // Confirm data is present
     if (!requesterId || !recipientId) {

@@ -1,5 +1,4 @@
 const allowedOrigins = [
-    'https://carspafrontend.onrender.com',
     'http://localhost:3000'
 ]
 
